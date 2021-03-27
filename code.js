@@ -1,13 +1,36 @@
-const lang = navigator.languaje;
-let date = new Date();
 
-let dayNumber = date.getDate();
-let month = date.getMonth();
-let dayName = date.toLocaleString(lang, {weekday: 'long'})
-let monthName = date.toLocaleString(lang, {month: 'long'})
-let year = date.getFullYear()
+Array.prototype.random = function () {
+  return this[Math.floor((Math.random()*this.length))];
+}
 
-document.getElementById('monthName').innerHTML = monthName;
-document.getElementById('dayName').innerHTML = dayName;
-document.getElementById('dayNumber').innerHTML = dayNumber;
-document.getElementById('year').innerHTML = year;
+
+$('#myButton').click( function() {
+	var s = $('#myText').val();
+	
+	var newStr = processUrl(s);
+	
+	if (newStr) {
+		$('#myText').val(newStr);
+	}
+	
+	return false; 
+});
+
+
+
+function processUrl(url) {
+	var m;
+	
+	// https://sj.uukanshu.com/book.aspx?id=153179
+	// https://www.uukanshu.com/b/153179
+	if ((m = url.match(/^https:\/\/sj\.uukanshu\.com\/book\.aspx\?id=(\d+)/)) && m[1]) return 'https://www.uukanshu.com/b/' + m[1];
+	
+	return '';
+}
+
+
+
+
+
+
+
